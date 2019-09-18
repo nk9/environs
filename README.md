@@ -55,6 +55,7 @@ export ENABLE_LOGIN=true
 export GITHUB_REPOS=webargs,konch,ped
 export COORDINATES=23.3,50.0
 export LOG_LEVEL=DEBUG
+export DATABASE_BINDS="users=sqlite:////tmp/dev.db,appmeta=sqlite:////path/to/appmeta.db"
 ```
 
 Parse them with environs...
@@ -81,6 +82,9 @@ enable_feature_x = env.bool("ENABLE_FEATURE_X", False)  # => False
 # parsing lists
 gh_repos = env.list("GITHUB_REPOS")  # => ['webargs', 'konch', 'ped']
 coords = env.list("COORDINATES", subcast=float)  # => [23.3, 50.0]
+
+# parsing dicts
+SQLALCHEMY_BINDS = env.dict("DATABASE_BINDS") # => { 'users': 'sqlite:////tmp/dev.db', 'appmeta': 'sqlite:////path/to/appmeta.db' }
 ```
 
 ## Supported types
